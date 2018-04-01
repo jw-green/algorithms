@@ -1,39 +1,39 @@
-from config import ALGO_ROOT, DETAILS_FILE_NAME
+from config import DETAILS_FILENAME
 from os import listdir
 
 from algo import Algo
 
-algos = []
-# type_paths = []
-# name_paths = []
 
-type_list = listdir(ALGO_ROOT)                              #Get list of types
+def find_all(path, output=False):
 
-for algo_type in type_list:
+    algos = []
+    type_list = listdir(path)  # Get list of types
 
-    algo_type_path = ALGO_ROOT + algo_type + "/"            #Get path of algo type
-    # type_paths.append(algo_type_path)                       #DEBUG: Create list of algo type paths
+    for algo_type in type_list:
 
-    algo_name_list = listdir(algo_type_path)                #Get list of algo names for type
+        algo_type_path = path + algo_type + "/"  # Get path of algo type
 
-    for algo_name in algo_name_list:
+        # Get list of algo names for type
+        algo_name_list = listdir(algo_type_path)
 
-        details = ""
-        
-        algo_name_path = algo_type_path + algo_name + "/"   #Make algo name path string
-        # name_paths.append(algo_name_path)                   #DEBUG: Create list of algo name paths
-        print(algo_name_path)
+        for algo_name in algo_name_list:
 
-        algo_languages = listdir(algo_name_path)            #Get list of algo languages
+            details = ""  # Blank details filename
+            algo_name_path = algo_type_path + algo_name + "/"  # Make algo name path string
 
-        if DETAILS_FILE_NAME in algo_languages:             #If there's a details file, log it and remove
-            details = algo_name_path + DETAILS_FILE_NAME    # - Log
-            algo_languages.remove(DETAILS_FILE_NAME)        # - Remove
-               
-        algos.append(Algo(algo_name, algo_type, details, algo_languages))  #All details collected. Log Algo
+            # Get list of algo languages
+            algo_languages = listdir(algo_name_path)
 
-for algo in algos:
-    algo_desc = algo.__str__()
-    print(algo_desc)
+            if DETAILS_FILENAME in algo_languages:  # If there's a details file, log it and remove
+                details = algo_name_path + DETAILS_FILENAME    # - Log
+                algo_languages.remove(DETAILS_FILENAME)        # - Remove
 
-    
+            # All details collected. Log Algo
+            algos.append(Algo(algo_name, algo_type, details, algo_languages))
+
+    if output is True:
+        for algo in algos:
+            algo_desc = algo.__str__()
+            print(algo_desc)
+
+    return algos

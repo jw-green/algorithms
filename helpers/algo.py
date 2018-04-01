@@ -6,21 +6,19 @@ class Algo:
         self.languages = languages
 
     def __str__(self):
-        return "Name: %s\nType: %s\nDetails: %s\nLanguages: %s" % (self.name, 
-                                                                   self.algo_type, 
-                                                                   self.details_path, 
-                                                                   self.languages)
+        return "Name: %s\nType: %s\nDetails: %s\nLanguages: %s\n" % (self.name,
+                                                                     self.algo_type,
+                                                                     self.details_path,
+                                                                     self.languages)
 
-    def set_name(self, value):
+    def setName(self, value):
         self.name = value
 
-    def set_algo_type(self, value):
+    def setAlgoType(self, value):
         self.algo_type = value
 
-    def set_details_path(self, value):
+    def setDetailsPath(self, value):
         self.details_path = value
 
-    def set_languages(self, value):
+    def setLanguages(self, value):
         self.languages = value
-
-

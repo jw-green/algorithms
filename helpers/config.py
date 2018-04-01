@@ -1,2 +1,10 @@
 ALGO_ROOT = "../Algos/"
-DETAILS_FILE_NAME = "details.md"
+
+DETAILS_FILENAME = "details.md"
+
+DETAILS_TEMPLATE_FILENAME = "templates/details.templt"
+DETAILS_TEMPLATE_TITLE_TOKEN = "<Title>"
+DETAILS_TEMPLATE_LANGUAGE_TOKEN = "<Languages>"
+DETAILS_TEMPLATE_LANGUAGE_HLEVEL = 3
+DETAILS_TEMPLATE_CODE_AREA = "Implementation"
+DETAILS_DEFAULT_CODE_BLOCK = "```<Languages>\n    <Code>\n```"
