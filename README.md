@@ -2,10 +2,22 @@
 
 ## Structure
 
+```plaintext
+.
+|-- Algos
+|   `-- <Type>
+|       `-- <Name>
+|           `-- <Language>
+|               |-- src
+|               `-- test
+`-- helpers
+    `-- templates
+```
+
 ## Aim
 
-The aim here is to implement as many algorithms as possible in multiple languages. This is partially an educational tool, but also to be used as code snippets in future.
+To implement as many algorithms as possible in multiple languages. This is partially an educational tool, but also to be used as code snippets in future.
 
-## Web Pages
+## Details Pages
 
-Each algorithm should have its own web page to explain the algorithms stats, such as Big-O notation. This could also be extended to a dashboard for algos, where they can be searched based on the problem scenario, or certain properties of a problem.
+Each algorithm has its own details page to explain the algorithm's stats, such as Big-O notation, and the concepts that it utilises. Under that is the implementations in other languages.
