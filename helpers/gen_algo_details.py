@@ -40,6 +40,27 @@ def replaceTitle(string, new_value):
     return string.replace(DETAILS_TEMPLATE_TITLE_TOKEN, new_value)
 
 
+def openAndReadFile(file_name):
+    file_handle = open(file_name, "r")
+    file_lines = file_handle.read().splitlines()
+    return file_lines
+
+
+def replaceCodeBlock(details_file, algo):
+    for language in algo.languages:
+        section_header = '#' * DETAILS_TEMPLATE_LANGUAGE_HLEVEL + " " + language
+
+        for line in details_file:
+            if DETAILS_TEMPLATE_CODE_TOKEN in line:
+                code_path = ALGO_ROOT + "/" + algo.algo_type + \
+                    "/" + algo.name + "/" + language + "/" \
+                    + algo.name[0].lower() + algo.name[1:] #Glob for filename
+                new_lines = openAndReadFile(code_path)
+                line = line.replace(
+                    DETAILS_DEFAULT_CODE_BLOCK, '\n'.join(new_lines))
+                print(line)
+
+
 def replaceLanguageBlock(details_file, token_line, algo):
 
     if len(algo.languages) < 1:
@@ -77,6 +98,8 @@ def replaceLanguageBlock(details_file, token_line, algo):
 
     # Check if there's anything under the header before the next '#'
 
+# MAIN
+
 
 file_manager = FileManager()
 
@@ -103,6 +126,11 @@ for algo in algo_list:
 
             if line is not None:
                 details_file.write(line + "\n")
+
+        details_file.close()
+        details_file = open(algo.details_path, "r")
+        file_manager.addFile(details_file)
+        replaceCodeBlock(details_file, algo)
     else:
         details_file = open(algo.details_path, "r+")
         file_manager.addFile(details_file)

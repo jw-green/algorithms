@@ -9,7 +9,7 @@ def find_all(path, output=False):
     algos = []
     type_list = listdir(path)  # Get list of types
 
-    for algo_type in type_list:
+    for algo_type isn type_list:
 
         algo_type_path = path + algo_type + "/"  # Get path of algo type
 
